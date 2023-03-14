@@ -34,15 +34,11 @@ int potenciaIterativa(int base, int exponente)
         return 1;
     }
 
-    while (exponente > 0)
+    for (int i = 0; i < exponente; i++)
     {
-        // verifico si es impar
-        if ((exponente % 2) != 0)
-            valor = valor * base;
-        // devuelve parte entera
-        exponente = exponente / 2;
-        base = base * base;
+        valor = valor * base;
     }
+
     return valor;
 }
 
@@ -53,6 +49,8 @@ int main()
     scanf("%d", &a);
     printf("Ingrese exponente:");
     scanf("%d", &b);
+    printf("Base: %d\n", a);
+    printf("Exponente: %d\n", b);
     value = potenciaRecursiva(a, b);
     printf("Funcion Recursiva: %d\n", value);
     value = potenciaIterativa(a, b);
@@ -64,24 +62,39 @@ int main()
 
 #include <stdio.h>
 
-int sumaIterativa(int filas, int mat[][filas]) {
+/*Tratamos el array de dos dimensiones como un array de una sola dimensión*/
+/*Ejemplo:
+int mat[2][2]={{2,2}.{2,2}}
+pasamo a tratarlo como:
+mat[4]={2,2,2,2}*/
+int sumaIterativa(int *mat, int filas)
+{
     int suma = 0;
     for (int i = 0; i < filas; i++)
     {
-        suma = suma + mat[i][i];
+        suma = suma + mat[i * filas + i];
+        /*Ejemplo:
+        i = 0
+        mat[0*2+0] = mat[0]
+        i = 1
+        mat[1*2+1] = mat[3]
+        Si verificamos con el array multidimensional
+        vemos que estamos obteniendo el elemento de la diagonal principal
+        en cada iteración*/
     }
     return suma;
 }
 
-int sumaRecursiva(int filas, int mat[][filas], int fila, int columna) {
-    if (fila == 0 && columna == 0) {
-        return mat[fila][columna];
+/*Empieza del primer elemento de la diagonal principal y se mueve hacia el último*/
+int sumaRecursiva(int *mat, int filas, int fila)
+{
+    if (fila == filas)
+    {
+        return 0;
     }
-    if (columna == 0) {
-        return mat[fila][columna] + sumaRecursiva(filas, mat, fila - 1, filas);
-    }
-    else {
-        return mat[fila][columna] + sumaRecursiva(filas, mat, fila, columna - 1);
+    else
+    {
+        return mat[fila * filas + fila] + sumaRecursiva(mat, filas, fila + 1);
     }
 }
 
@@ -117,9 +130,9 @@ int main()
         printf("\n");
     }
 
-    suma = sumaIterativa(filas, mat);
+    suma = sumaIterativa(&mat[0][0], filas);
     printf("La suma iterativa de los elementos de la diagonal principal es: %d \n", suma);
-     suma = sumaRecursiva(filas, mat, 0, 0);
+    suma = sumaRecursiva(&mat[0][0], filas, 0);
     printf("La suma recursiva de los elementos de la diagonal principal es: %d \n", suma);
 
     return 0;
