@@ -1,4 +1,4 @@
-/*Guía de Ejercicios - Módulo 1*/
+/*Guía de Ejercicios - Unidad 1*/
 /*1.Diseñar un algoritmo recursivo e iterativo que devuelva la suma de los primeros N enteros*/
 
 /*2.Diseñar un algoritmo recursivo que encuentre la suma de los enteros positivos pares desde N hasta 2. Si N es impar imprimirun mensaje de error.*/
