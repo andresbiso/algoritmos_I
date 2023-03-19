@@ -1,145 +1,159 @@
-/*Autoevaluación: Eficiencia de los algoritmos */
+/*Autoevaluación: Análisis del tiempo de ejecución  */
 /*1.*/
-/*Dada la siguiente función recursiva que suma los elementos de un arreglo de dimensión dim: */
-int sumar(int vec[], int dim)
+/*El tiempo de ejecución del siguiente código es:*/
+/*
+void intercambiar(int *x, int *y)
 {
-    if (dim == 0)
-        return 0;
-    else
-        return sumar(vec, dim - 1) + vec[dim];
+    int *aux;
+    *aux = *x;
+    *x = *y;
+    *y = *aux;
 }
-
-/*¿Es correcta esta función? */
+*/
 
 /*Implementación Ejemplo*/
 #include <stdio.h>
 
-int sumar(int vec[], int dim)
+void intercambiar(int *x, int *y)
 {
-    if (dim == 0)
-        return 0;
-    else
-        return sumar(vec, dim - 1) + vec[dim];
+    int *aux;
+    *aux = *x;
+    *x = *y;
+    *y = *aux;
 }
 
 int main()
 {
-    int numberArray[] = {2, 8, 4, 12};
-    int dim = 4;
-    int val = sumar(numberArray, dim);
-    
-    printf("%d", val);
+    int x, y;
+    x = 10;
+    y = 20;
+    intercambiar(&x, &y);
+
+    printf("x: %d \n", x);
+    printf("y: %d \n", y);
 
     return 0;
 }
 
-/*Respuesta: */
-/* Si bien la función realiza la suma al proveerle de un array de números enteros y una dimensión, 
-no está del todo bien ya que se pierde el elemento en la posición 0 del Array.
-Por lo tanto, propongo la siguiente resolución: */
-
-/*Implementación Solución*/
+/*Implementación Ejemplo - Modifcada para que funcione*/
 #include <stdio.h>
 
-int sumar(int vec[], int dim)
+void intercambiar(int *x, int *y)
 {
-    if (dim < 0)
-        return 0;
-    else
-        return sumar(vec, dim - 1) + vec[dim];
+    int *aux;
+    aux = x;
+    x = y;
+    y = aux;
 }
 
 int main()
 {
-    int numberArray[] = {2, 8, 4, 12};
-    int dim = 4;
-    int val = sumar(numberArray, dim);
-    
-    printf("%d", val);
+    int x, y;
+    x = 10;
+    y = 20;
+    intercambiar(&x, &y);
+
+    printf("x: %d \n", x);
+    printf("y: %d \n", y);
 
     return 0;
 }
 
+/*Respuestas:
+1. 10
+2. 5n
+3. 6
+*/
+/*Respuesta elegida: */
 
-/*2.*/
-/*¿Cuál es la salida del siguiente código? */
-int f(int x)
-{
-    if (x > 100)
-        return (x - 10);
-    else
-        return (f(f(x + 11)));
-}
-
-int main()
-{
-    int a = 99;
-    printf("%d", f(a));
-    return 0;
-}
-
-/*Seleccionar Respuesta: 89, 100, 91*/
-
-/*Respuesta: 91*/
-/*Explicación: Pasamos de 99 a 110, de 110 a 100, de 100 a 111, de 111 a 101 y de 101 a 91*/
+/*2.Para medir la eficiencia de un algoritmo, es necesario medir el tiempo que tarda su ejecución y la memoria que ocupa.*/
+/*Respuestas: Verdadero o Falso*/
 
 /*3.*/
-/*Dada la siguiente función:*/
-void fun(int val)
-{
+/*El tiempo de ejecución del siguiente código es:*/
 
-    if (val > 1)
-        fun(val / 2);
-    printf("%d", val % 2);
-}
-/*Explicar qué salida produce esta función recursiva.*/
+/*
+ if (n % 2 == 0)
+    {
+        for (i = 1; i <= n; i++)
+            x++;
+    }
+*/
 
 /*Implementación Ejemplo*/
 #include <stdio.h>
 
-void fun(int val)
+int funcion(int n)
 {
-
-    if (val > 1)
-        fun(val / 2);
-    printf("%d", val % 2);
-}
-
-int main()
-{
-    int a = 2;
-    fun(a);
-    return 0;
-}
-
-/*Respuesta:*/
-/*Esta función recibe un valor entero por argumento y lo va dividiendo a la mitad hasta que el valor sea menor a 1.
-Luego imprime por pantalla, utilizando el operador módulo, el resto de la división entre este número obtenido de las consecutivas divisiones y 2*/
-
-/*4.*/
-/*Dado el siguiente código: */
-void f(int num, int div)
-{
-    if (num > 1)
+    int i,x;
+    x=0;
+    if (n % 2 == 0)
     {
-        if ((num % div) == 0)
-        {
-            f(num / div, div);
-        }
-        else
-        {
-            f(num, div + 1);
-        }
+        for (i = 1; i <= n; i++)
+            x++;
     }
+    return x;
 }
 
 int main()
 {
-    f(7, 2);
+    int n, value;
+    n = 10;
+    value = funcion(n);
+
+    printf("%d \n", value);
+
     return 0;
 }
-/*La función recursiva no termina nunca. ¿Verdadero o Falso?*/
 
-/*Respuesta: Falso*/
-/*Explicación: Si ponemos un printf("%d", num % div), vemos el siguiente resultado: 113210. Al obtener 0 => pasa por f(num / div, div)
-el cuál pasa como argumentos f(1,7). Luego como num == 1 => finaliza el programa*/
+/*Respuestas:
+1. 3+5n
+2. 4+6n
+3. 6+7n
+*/
+/*Respuesta elegida: */
+
+/*4.¿Cuáles son los dos estudios posibles sobre el tiempo de ejecución de un algoritmo?*/
+/*Respuesta:*/
+
+/*5.*/
+/*El tiempo de ejecución del siguiente código es:*/
+
+/*
+float sumatorio (int n)
+{
+    float suma = 0;
+    for (i=1;i<=n;i++) 
+        suma=suma+i;
+    return suma;
+}
+*/
+
+/*Implementación Ejemplo*/
+#include <stdio.h>
+
+float sumatorio (int n)
+{
+    int i;
+    float suma = 0;
+    for (i=1;i<=n;i++) 
+        suma=suma+i;
+    return suma;
+}
+
+int main()
+{
+    int n, value;
+    n = 10;
+    value = sumatorio(n);
+
+    printf("%d \n", value);
+
+    return 0;
+}
+
+/*
+T(N)=3n^2+2n
+¿Verdadero o Falso?
+*/
+/*Respuesta elegida: */
