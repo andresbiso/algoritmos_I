@@ -48,7 +48,7 @@ int obtenerSumaEnterosParesRecursivo(int n)
         return 0;
     }
 
-    return n + obtenerSumaEnterosParesRecursivo(n-2);
+    return n + obtenerSumaEnterosParesRecursivo(n - 2);
 }
 
 int main()
@@ -68,8 +68,79 @@ int main()
 
 /*3.Diseñar un algoritmo recursivo e iterativo que permita hacer la división por restas sucesivas.*/
 
+#include <stdio.h>
+
+int obtenerDivisionIterativo(int dividendo, int divisor)
+{
+    int i = 0;
+    while (dividendo >= divisor)
+    {
+        dividendo = dividendo - divisor;
+        i++;
+    }
+    return i;
+}
+
+int obtenerDivisionRecursivo(int dividendo, int divisor, int cociente)
+{
+    if (dividendo >= divisor)
+    {
+        cociente++;
+        obtenerDivisionRecursivo(dividendo - divisor, divisor, cociente);
+    }
+    else
+    {
+        return cociente;
+    }
+}
+
+int main()
+{
+    int dividendo, divisor, cociente, result;
+    cociente = 0;
+    printf("Ingrese dividendo:\n");
+    scanf("%d", &dividendo);
+    printf("Ingrese divisor:\n");
+    scanf("%d", &divisor);
+    result = obtenerDivisionIterativo(dividendo, divisor);
+    printf("Forma iterativa: %d\n", result);
+    result = obtenerDivisionRecursivo(dividendo, divisor, cociente);
+    printf("Forma recursiva: %d\n", result);
+    return 0;
+}
+
 /*4.Diseñar un algoritmo recursivo que permita invertir un número.*/
 /*Ejemplo: Entrada: 123 Salida: 321*/
+
+#include <stdio.h>
+
+int invertirNumero(int num, int inverso)
+{
+    int resto = 0;
+    if (num != 0)
+    {
+        resto = num % 10;
+        inverso = inverso * 10 + resto;
+        num = num / 10;
+        invertirNumero(num, inverso);
+    }
+    else
+    {
+        return inverso;
+    }
+}
+
+int main()
+{
+    int num, inverso, result;
+    inverso = 0;
+    printf("Ingrese un número:\n");
+    scanf("%d", &num);
+
+    result = invertirNumero(num, inverso);
+    printf("Forma recursiva: %d\n", result);
+    return 0;
+}
 
 /*5.Diseñar un algoritmo recursivo que permita sumar los dígitos de un número.*/
 /*Ejemplo: Entrada: 123 Resultado:6*/
