@@ -1,5 +1,39 @@
 /*Guía de Ejercicios - Unidad 1*/
 /*1.Diseñar un algoritmo recursivo e iterativo que devuelva la suma de los primeros N enteros*/
+#include <stdio.h>
+
+int obtenerSumaEnterosIterativo(int n)
+{
+    int i, accum;
+    accum = 0;
+    for (i = 1; i <= n; i++)
+    {
+        accum = accum + i;
+    }
+    return accum;
+}
+
+int obtenerSumaEnterosRecursivo(int n)
+{
+    if (n < 0)
+    {
+        return 0;
+    }
+
+    return n + obtenerSumaEnterosRecursivo(n - 1);
+}
+
+int main()
+{
+    int num, result;
+    printf("Ingrese la cantidad de enteros a sumar:\n");
+    scanf("%d", &num);
+    result = obtenerSumaEnterosIterativo(num);
+    printf("Forma iterativa: %d\n", result);
+    result = obtenerSumaEnterosRecursivo(num);
+    printf("Forma recursiva: %d\n", result);
+    return 0;
+}
 
 /*2.Diseñar un algoritmo recursivo que encuentre la suma de los enteros positivos pares desde N hasta 2. Si N es impar imprimirun mensaje de error.*/
 
