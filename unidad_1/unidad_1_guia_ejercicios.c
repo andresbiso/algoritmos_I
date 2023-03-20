@@ -35,7 +35,36 @@ int main()
     return 0;
 }
 
-/*2.Diseñar un algoritmo recursivo que encuentre la suma de los enteros positivos pares desde N hasta 2. Si N es impar imprimirun mensaje de error.*/
+/*2.Diseñar un algoritmo recursivo que encuentre la suma de los enteros positivos pares desde N hasta 2.
+Si N es impar imprimir un mensaje de error.
+*/
+
+#include <stdio.h>
+
+int obtenerSumaEnterosParesRecursivo(int n)
+{
+    if (n < 2)
+    {
+        return 0;
+    }
+
+    return n + obtenerSumaEnterosParesRecursivo(n-2);
+}
+
+int main()
+{
+    int num, result;
+    printf("Ingrese un entero par positivo:\n");
+    scanf("%d", &num);
+    if (num < 0 || num % 2 != 0)
+    {
+        printf("Error: Ha ingresado un valor inválido");
+        return 0;
+    }
+    result = obtenerSumaEnterosParesRecursivo(num);
+    printf("Forma recursiva: %d\n", result);
+    return 0;
+}
 
 /*3.Diseñar un algoritmo recursivo e iterativo que permita hacer la división por restas sucesivas.*/
 
