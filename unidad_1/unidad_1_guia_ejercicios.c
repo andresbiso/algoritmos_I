@@ -369,7 +369,6 @@ para dar fin a la división*/
 
 void divisionIterativa(int dividendo, int divisor)
 {
-    int i;
     int resto = dividendo;
     int cociente = 0;
     while (resto >= divisor)
@@ -384,14 +383,14 @@ int main()
 {
     int dividendo, divisor;
 
-    printf("Ingrese dividendo n:\n");
+    printf("Ingrese dividendo:\n");
     if (scanf("%d", &dividendo) != 1)
     {
         fprintf(stderr, "Input Inválido\n");
         return 1;
     }
 
-    printf("Ingrese divisor k:\n");
+    printf("Ingrese divisor:\n");
     if (scanf("%d", &divisor) != 1)
     {
         fprintf(stderr, "Input Inválido\n");

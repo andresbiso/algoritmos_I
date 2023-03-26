@@ -224,9 +224,115 @@ int main()
 /*2.Desarrollar  un  algoritmo  que  calcule  la  sumatoria  de  los  primeros  n  números  naturales.*/
 /*Calcular su tiempo de ejecución.*/
 
+#include <stdio.h>
+
+int main()
+{
+    int n, i, accum;
+    accum = 0;
+    printf("Ingrese la cantidad de enteros a sumar:\n");
+    scanf("%d", &n);
+
+    i = 1;
+    while (i <= n)
+    {
+        accum = accum + i;
+        i++;
+    }
+
+    printf("Resultado: %d\n", accum);
+
+    return 0;
+}
+
 /*3.Desarrollar  un  algoritmo  iterativo  que  calcule  la  división  entre  dos  números  enteros  por restas sucesivas.*/
 /*Calcular su tiempo de ejecución.*/
 
+#include <stdio.h>
+
+int main()
+{
+    int dividendo, divisor, resto, cociente;
+
+    printf("Ingrese dividendo:\n");
+    scanf("%d", &dividendo);
+
+    printf("Ingrese divisor:\n");
+    scanf("%d", &divisor);
+
+    resto = dividendo;
+    cociente = 0;
+    while (resto >= divisor)
+    {
+        resto = resto - divisor;
+        cociente = cociente + 1;
+    }
+    printf("cociente: %d\n", cociente);
+
+    return 0;
+}
+
 /*4.Desarrollar un algoritmo para calcular la media de un vector de n elementos. Luego, calcular su tiempo de ejecución.*/
 
+#include <stdio.h>
+
+int main()
+{
+    int i, len, accum;
+
+    printf("Ingrese largo del array:\n");
+    scanf("%d", &len);
+    int array[len];
+
+    i = 0;
+    while (i < len)
+    {
+        printf("Ingrese valor %d del array:\n", i + 1);
+        scanf("%d", &array[i]);
+        i++;
+    }
+
+    i = 0;
+    while (i < len)
+    {
+        accum = accum + array[i];
+        i++;
+    }
+
+    printf("Media del vector: %d\n", accum / len);
+    return 0;
+}
+
 /*5.Desarrollar un algoritmo para calcular el elemento máximo de un vector,y luego calcular su tiempo de ejecución.*/
+#include <stdio.h>
+
+int main()
+{
+    int i, len, max;
+
+    printf("Ingrese largo del array:\n");
+    scanf("%d", &len);
+    int array[len];
+
+    i = 0;
+    while (i < len)
+    {
+        printf("Ingrese valor %d del array:\n", i + 1);
+        scanf("%d", &array[i]);
+        i++;
+    }
+
+    i = 0;
+    max = array[0];
+    while (i < len)
+    {
+        if (array[i] > max)
+        {
+            max = array[i];
+        }
+        i++;
+    }
+
+    printf("Elemento máximo del vector: %d\n", max);
+    return 0;
+}
