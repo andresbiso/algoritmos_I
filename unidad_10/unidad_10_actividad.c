@@ -2,38 +2,36 @@
 /*1. Diseñar un algoritmo utilizando la técnica de programación dinámica para calcular si un número es perfecto*/
 /*(la suma de todos sus divisores es igual al número sin incluirse).*/
 
-#include <stdio.h>
-#include <stdlib.h>
-
-void primos(int n, int tabla[])
-{
-    int i, j, nprimos;
-    tabla[0] = 1;
-    nprimos = 1;
-    for(i = 2; nprimos<=n;i++)
-    {
-    	j = 1;
-    	while((j < nprimos) && (i % tabla[j] != 0))
-    		j++;
-    	if(j == nprimos)
-    	{
-    		printf("%d\n", i);
-    		tabla[nprimos] = i;
-    		nprimos++;
-    	}
-    }
-}
+#include<stdio.h>
  
+int verificarPerfecto(int num)
+{
+	int i;
+	int suma;
 
+	suma = 0;
+	for (i = 1; i <= (num/2); i++)
+	{
+		if(num % i == 0)
+			suma += i;
+	}
+	if (suma == num)
+		return 0;
+	else
+		return 1;
+}
+
+/*Ejemplo: 6 es un número perfecto*/
 int main()
 {
-	int elemento;
-	int tabla[20];
+	int num;
 
-	printf("Ingrese el número a obtener sus primos:\n");
-	scanf("%d", &elemento);
+	printf("Ingresar número:\n");
+	scanf("%d",&num);
 
-	printf("Primos de %d:\n", elemento);
-    primos(elemento, tabla);
-    return 0;
+	if(verificarPerfecto(num) == 0)
+		printf("%d es un número perfecto\n", num);
+	else
+		printf("%d no es un número perfecto\n", num);
+	return 0;
 }
