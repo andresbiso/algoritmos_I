@@ -3,13 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
- 
-typedef struct {
-    int valor, indice;
-} par;
- 
 
-int comparar_pares(const void* valorA, const void* valorB)
+int comparar_valores(const void* valorA, const void* valorB)
 {
     return (*(int*)valorA - *(int*)valorB);
 }
@@ -17,7 +12,7 @@ int comparar_pares(const void* valorA, const void* valorB)
 void ordenarArray(int array[], int cantidad)
 {
     /*Utilizamos quick sort para ordenar el arreglo*/
-    qsort(array, cantidad, sizeof(par), comparar_pares);
+    qsort(array, cantidad, sizeof(int), comparar_valores);
 }
 
 int busquedaBinariaRecursiva(int array[], int posizq, int posder, int elem)
