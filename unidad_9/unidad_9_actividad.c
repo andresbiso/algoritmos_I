@@ -23,7 +23,7 @@ int busquedaBinariaRecursiva(int array[], int posizq, int posder, int elem)
  
 		/*Caso Base*/
 		/*Elemeto Conocido*/
-        /*Si el elemento está en la mitad, lo duelvo*/
+        /*Si el elemento está en pospivote, lo devuelvo*/
         if (array[pospivote] == elem)
             return pospivote;
  
