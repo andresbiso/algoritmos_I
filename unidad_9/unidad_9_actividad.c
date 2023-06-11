@@ -31,18 +31,41 @@ int busquedaBinariaRecursiva(int array[], int posizq, int posder, int elem)
 
 int main()
 {
-	/*int array;
+	int cantidad;
 	int i;
-	printf("Ingrese cantidad de elementos\n")
-	scanf("%d", &n);
-	printf("Ingrese elemento %d\n", i)
-	scanf("%d", &n);*/
-    int array[] = {20, 30, 40, 100, 400};
-    int posmitad = sizeof(array) / 2;
-    int elemento = 100;
-    int resultado = busquedaBinariaRecursiva(array, 0, posmitad - 1, elemento);
+	int elemento;
+	int posmitad;
+	int resultado;
+
+	/*Ejemplo: 5*/
+	printf("Ingrese la cantidad de elementos del arreglo:\n");
+	scanf("%d", &cantidad);
+
+	int array[cantidad];
+
+	/*Ejemplo: {2, 3, 4, 10, 40}*/
+	printf("--Ingresar valores del arreglo--\n");
+
+	for(i = 0; i < cantidad ; i++) {
+		printf("Ingresar valor %d:\n", i);
+		scanf("%d", &array[i]);	
+	}
+	
+	printf("--El arreglo es--\n");
+	for(i = 0; i < cantidad ; i++)
+	{
+		printf("%d\t", array[i]);
+	}
+	printf("\n");
+	
+	/*Ejemplo: 10*/
+	printf("Ingrese el elemento a buscar:\n");
+	scanf("%d", &elemento);
+
+    posmitad = sizeof(array) / 2;
+    resultado = busquedaBinariaRecursiva(array, 0, posmitad - 1, elemento);
     (resultado == -1)
-        ? printf("El elemento no está presente en el array")
-        : printf("El elemento %d se encuentra en la posición %d", elemento, resultado);
+        ? printf("El elemento no está presente en el array\n")
+        : printf("El elemento %d se encuentra en la posición %d\n", elemento, resultado);
     return 0;
 }
