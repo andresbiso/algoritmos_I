@@ -76,7 +76,7 @@ int main()
 	}
 	printf("\n");
 	
-	printf("--Ordenamos el arreglo para aplicar búsqqueda binaria--\n");
+	printf("--Ordenamos el arreglo para aplicar búsqueda binaria--\n");
 	printf("Ordenando el arreglo...\n");
 
 	ordenarArray(array, cantidad);
