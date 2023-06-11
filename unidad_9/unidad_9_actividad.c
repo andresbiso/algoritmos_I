@@ -2,7 +2,23 @@
 /*1. Utilizando la técnica "divide y vencerás", desarrollar un algoritmo que, dado un vector de n elementos y un número entero m, determine si existe v[m]=m.*/
 
 #include <stdio.h>
+#include <stdlib.h>
  
+typedef struct {
+    int valor, indice;
+} par;
+ 
+
+int comparar_pares(const void* valorA, const void* valorB)
+{
+    return (*(int*)valorA - *(int*)valorB);
+}
+ 
+void ordenarArray(int array[], int cantidad)
+{
+    /*Utilizamos quick sort para ordenar el arreglo*/
+    qsort(array, cantidad, sizeof(par), comparar_pares);
+}
 
 int busquedaBinariaRecursiva(int array[], int posizq, int posder, int elem)
 {
@@ -52,6 +68,32 @@ int main()
 	}
 	
 	printf("--El arreglo es--\n");
+	printf("Pos\t");
+	for(i = 0; i < cantidad ; i++)
+	{
+		printf("%d\t", i);
+	}
+	printf("\n");
+	printf("Val\t");
+	for(i = 0; i < cantidad ; i++)
+	{
+		printf("%d\t", array[i]);
+	}
+	printf("\n");
+	
+	printf("--Ordenamos el arreglo para aplicar búsqqueda binaria--\n");
+	printf("Ordenando el arreglo...\n");
+
+	ordenarArray(array, cantidad);
+	
+	printf("--El arreglo odenado es--\n");
+	printf("Pos\t");
+	for(i = 0; i < cantidad ; i++)
+	{
+		printf("%d\t", i);
+	}
+	printf("\n");
+	printf("Val\t");
 	for(i = 0; i < cantidad ; i++)
 	{
 		printf("%d\t", array[i]);
