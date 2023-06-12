@@ -8,17 +8,29 @@ int verificarPerfecto(int num)
 {
 	int i;
 	int suma;
+	int cotaSuperior;
 
 	suma = 0;
-	for (i = 1; i <= (num/2); i++)
+	cotaSuperior = num/2;
+	printf("--Obtenemos divisores de %d--\n", num);
+	for (i = 1; i <= cotaSuperior; i++)
 	{
 		if(num % i == 0)
-			suma += i;
+		{
+			printf("%d es divisor de %d\n", i, num);
+			suma += i;	
+		}
 	}
+	printf("--Suma de los divisores--\n");
+	printf("Total: %d\n", suma);
 	if (suma == num)
-		return 0;
+	{
+		return 0;	
+	}
 	else
+	{
 		return 1;
+	}
 }
 
 /*Ejemplo: 6 es un número perfecto*/
@@ -26,12 +38,16 @@ int main()
 {
 	int num;
 
-	printf("Ingresar número:\n");
+	printf("Ingresar numero:\n");
 	scanf("%d",&num);
 
 	if(verificarPerfecto(num) == 0)
-		printf("%d es un número perfecto\n", num);
+	{
+		printf("%d es un numero perfecto\n", num);
+	}
 	else
-		printf("%d no es un número perfecto\n", num);
+	{
+		printf("%d no es un numero perfecto\n", num);
+	}
 	return 0;
 }
