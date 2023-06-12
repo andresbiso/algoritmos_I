@@ -7,30 +7,18 @@
 int verificarPerfecto(int num)
 {
 	int i;
-	int j;
 	int suma;
 	int cotaSuperior;
-	int ndivisores;
-	int arreglo[50];
 
 	suma = 0;
 	cotaSuperior = num/2;
-	ndivisores = 0;
 	printf("--Obtenemos divisores de %d--\n", num);
-	for (i = 1; ndivisores <= cotaSuperior; i++)
+	for (i = 1; i <= cotaSuperior; i++)
 	{
-		j = 0;
-		while((j < ndivisores) && (i % arreglo[j] == 0))
-		{
-			j++;
-		}
-		printf("soy j: %d\n", j);
 		if(num % i == 0)
 		{
 			printf("%d es divisor de %d\n", i, num);
-			suma += i;
-			arreglo[ndivisores] = i;
-			ndivisores++;
+			suma += i;	
 		}
 	}
 	printf("--Suma de los divisores--\n");
