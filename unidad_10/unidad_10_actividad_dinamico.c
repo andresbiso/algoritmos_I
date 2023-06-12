@@ -7,57 +7,46 @@
 int verificarPerfecto(int num)
 {
 	int i;
-	int j;
-	int suma;
-	int cotaSuperior;
-	int ndivisores;
-	int arreglo[50];
+	int suma[num + 1];
+	int cantdivisores;
+	cantdivisores = 1;
+	suma[0] = 0;
+	suma[1] = 1;
 
-	suma = 0;
-	cotaSuperior = num/2;
-	ndivisores = 0;
 	printf("--Obtenemos divisores de %d--\n", num);
-	for (i = 1; ndivisores <= cotaSuperior; i++)
+	for (i = 2; i < num; i++)
 	{
-		j = 0;
-		while((j < ndivisores) && (i % arreglo[j] == 0))
-		{
-			j++;
-		}
-		printf("soy j: %d\n", j);
-		if(num % i == 0)
+		if (num % i == 0)
 		{
 			printf("%d es divisor de %d\n", i, num);
-			suma += i;
-			arreglo[ndivisores] = i;
-			ndivisores++;
+			cantdivisores++;
+			suma[cantdivisores] = suma[cantdivisores - 1] + i;
 		}
 	}
+ 
 	printf("--Suma de los divisores--\n");
-	printf("Total: %d\n", suma);
-	if (suma == num)
-	{
-		return 0;	
-	}
-	else
-	{
-		return 1;
-	}
+	printf("Total: %d\n", suma[cantdivisores]);
+	return suma[cantdivisores];
 }
 
-/*Ejemplo: 6 es un número perfecto*/
+/*Ejemplo: 6, 28 y 496 son números perfecto*/
 int main()
 {
 	int num;
+	int resultado;
 
 	printf("Ingresar numero:\n");
 	scanf("%d",&num);
 
-	if(verificarPerfecto(num) == 0)
+	resultado = verificarPerfecto(num);
+	if(resultado == num)
 	{
 		printf("%d es un numero perfecto\n", num);
 	}
-	else
+	else if(resultado == -1)
+	{
+		printf("No se puede calcular el número perfecto de valores < 2\n");
+	} else
 	{
 		printf("%d no es un numero perfecto\n", num);
 	}
