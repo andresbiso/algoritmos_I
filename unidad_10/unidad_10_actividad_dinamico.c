@@ -12,8 +12,14 @@ int verificarPerfecto(int num)
 	cantdivisores = 1;
 	suma[0] = 0;
 	suma[1] = 1;
+	
+	if (num < 2)
+	{
+		return -1;
+	}
 
 	printf("--Obtenemos divisores de %d--\n", num);
+	printf("1 es divisor de %d\n", num);
 	for (i = 2; i < num; i++)
 	{
 		if (num % i == 0)
@@ -29,7 +35,7 @@ int verificarPerfecto(int num)
 	return suma[cantdivisores];
 }
 
-/*Ejemplo: 6, 28 y 496 son números perfecto*/
+/*Ejemplo: 6, 28 y 496 son números perfectos*/
 int main()
 {
 	int num;
@@ -46,7 +52,8 @@ int main()
 	else if(resultado == -1)
 	{
 		printf("No se puede calcular el número perfecto de valores < 2\n");
-	} else
+	}
+	else
 	{
 		printf("%d no es un numero perfecto\n", num);
 	}
