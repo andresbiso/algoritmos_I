@@ -259,7 +259,7 @@ int main()
         }
     }
 
-    result = numeroMenor(array, len, min);
+    result = numeroMenor(array, len, array[0]);
     printf("Forma recursiva: %d\n", result);
     return 0;
 }
