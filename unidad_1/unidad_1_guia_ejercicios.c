@@ -183,7 +183,7 @@ int multiplicarDigitos(int array[], int len, int multi)
 {
     if (len > 0)
     {
-        multi = multi + array[len - 1];
+        multi = multi * array[len - 1];
         multiplicarDigitos(array, len - 1, multi);
     }
     else
@@ -195,7 +195,7 @@ int multiplicarDigitos(int array[], int len, int multi)
 int main()
 {
     int len, multi, result;
-    multi = 0;
+    multi = 1;
     printf("Ingrese largo del array:\n");
     if (scanf("%d", &len) != 1 || len <= 0 || len > 1000)
     {
